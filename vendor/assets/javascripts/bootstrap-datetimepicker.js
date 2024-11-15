@@ -1285,16 +1285,16 @@
                         if (keyMap[currentKey] !== keyBindKeys[keyBindKeys.length - 1]) {
                             continue;
                         }
-                        console.log("Checking keybind modifiers for: " + keyBindKeys);
+                        console.log("Checking keybind modifiers for: " + keyBindName);
 
                         // Check if all modifiers are pressed
                         var shiftMatch = false;
                         var ctrlMatch = false;
                         var altMatch = false;
 
-                        if ("shift" in keyBindKeys) { shiftMatch = event.shiftKey; console.log("needs shiftkey:true actual:" + shiftMatch); } else { shiftMatch = !event.shiftKey; }
-                        if ("control" in keyBindKeys) { ctrlMatch = event.ctrlKey; console.log("needs ctrlKey:true actual:" + ctrlMatch); } else { ctrlMatch = !event.ctrlKey; }
-                        if ("alt" in keyBindKeys) { altMatch = event.altKey; console.log("needs altKey:true actual:" + altMatch); } else { altMatch = !event.altKey; }
+                        if (keyBindKeys.indexOf("shift") > -1) { shiftMatch = event.shiftKey; console.log("needs shiftkey:true actual:" + shiftMatch); } else { shiftMatch = !event.shiftKey; }
+                        if (keyBindKeys.indexOf("control") > -1) { ctrlMatch = event.ctrlKey; console.log("needs ctrlKey:true actual:" + ctrlMatch); } else { ctrlMatch = !event.ctrlKey; }
+                        if (keyBindKeys.indexOf("alt") > -1) { altMatch = event.altKey; console.log("needs altKey:true actual:" + altMatch); } else { altMatch = !event.altKey; }
 
                         console.log("ShiftMatch:" + shiftMatch + " ctrlMatch:" + ctrlMatch + " altMatch:" + altMatch);
                         if (shiftMatch && ctrlMatch && altMatch) {
