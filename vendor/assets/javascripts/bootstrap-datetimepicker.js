@@ -1282,6 +1282,7 @@
                     allModifiersPressed,
                     pressed = 'p';
 
+                console.log("keydown with key" + currentKey);
                 keyState[currentKey] = pressed;
 
                 for (index in keyState) {
@@ -2616,6 +2617,7 @@
                 if (!widget) {
                     return;
                 }
+                console.log("control pageup");
                 if (widget.find('.timepicker').is(':visible')) {
                     widget.find('.btn[data-action="incrementHours"]').click();
                 }
@@ -2624,6 +2626,7 @@
                 if (!widget) {
                     return;
                 }
+                console.log("shift pageup");
                 if (widget.find('.timepicker').is(':visible')) {
                     widget.find('.btn[data-action="incrementMinutes"]').click();
                 }
@@ -2632,6 +2635,7 @@
                 if (!widget) {
                     return;
                 }
+                console.log("control shift pageup");
                 if (widget.find('.timepicker').is(':visible')) {
                     widget.find('.btn[data-action="incrementSeconds"]').click();
                 }
