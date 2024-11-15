@@ -2538,28 +2538,28 @@
                     this.date(d.clone().subtract(this.stepping(), 'm'));
                 }
             },
-            'control up': function (widget) {
-                if (!widget) {
-                    return;
-                }
-                var d = this.date() || this.getMoment();
-                if (widget.find('.datepicker').is(':visible')) {
-                    this.date(d.clone().subtract(1, 'y'));
-                } else {
-                    this.date(d.clone().add(1, 'h'));
-                }
-            },
-            'control down': function (widget) {
-                if (!widget) {
-                    return;
-                }
-                var d = this.date() || this.getMoment();
-                if (widget.find('.datepicker').is(':visible')) {
-                    this.date(d.clone().add(1, 'y'));
-                } else {
-                    this.date(d.clone().subtract(1, 'h'));
-                }
-            },
+            // 'control up': function (widget) {
+            //     if (!widget) {
+            //         return;
+            //     }
+            //     var d = this.date() || this.getMoment();
+            //     if (widget.find('.datepicker').is(':visible')) {
+            //         this.date(d.clone().subtract(1, 'y'));
+            //     } else {
+            //         this.date(d.clone().add(1, 'h'));
+            //     }
+            // },
+            // 'control down': function (widget) {
+            //     if (!widget) {
+            //         return;
+            //     }
+            //     var d = this.date() || this.getMoment();
+            //     if (widget.find('.datepicker').is(':visible')) {
+            //         this.date(d.clone().add(1, 'y'));
+            //     } else {
+            //         this.date(d.clone().subtract(1, 'h'));
+            //     }
+            // },
             left: function (widget) {
                 if (!widget) {
                     this.show();
@@ -2608,34 +2608,34 @@
             //    var toggle = widget.find('.picker-switch a[data-action="togglePicker"]');
             //    if(toggle.length > 0) toggle.click();
             //},
-            'control pageUp': function (widget) {
+            'control up': function (widget) {
                 if (!widget) {
                     return;
                 }
-                console.log("control pageup");
+                console.log("control up");
                 if (widget.find('.timepicker').is(':visible')) {
                     widget.find('.btn[data-action="incrementHours"]').click();
                 }
             },
-            'shift pageUp': function (widget) {
+            'shift up': function (widget) {
                 if (!widget) {
                     return;
                 }
-                console.log("shift pageup");
+                console.log("shift up");
                 if (widget.find('.timepicker').is(':visible')) {
                     widget.find('.btn[data-action="incrementMinutes"]').click();
                 }
             },
-            // 'alt pageUp': function (widget) {
-            //     if (!widget) {
-            //         return;
-            //     }
-            //     console.log("control shift pageup");
-            //     if (widget.find('.timepicker').is(':visible')) {
-            //         widget.find('.btn[data-action="incrementSeconds"]').click();
-            //     }
-            // },
-            'control pageDown': function (widget) {
+            'alt up': function (widget) {
+                if (!widget) {
+                    return;
+                }
+                console.log("control shift up");
+                if (widget.find('.timepicker').is(':visible')) {
+                    widget.find('.btn[data-action="incrementSeconds"]').click();
+                }
+            },
+            'control down': function (widget) {
                 if (!widget) {
                     return;
                 }
@@ -2643,7 +2643,7 @@
                     widget.find('.btn[data-action="decrementHours"]').click();
                 }
             },
-            'shift pageDown': function (widget) {
+            'shift down': function (widget) {
                 if (!widget) {
                     return;
                 }
@@ -2651,14 +2651,14 @@
                     widget.find('.btn[data-action="decrementMinutes"]').click();
                 }
             },
-            // 'alt pageDown': function (widget) {
-            //     if (!widget) {
-            //         return;
-            //     }
-            //     if (widget.find('.timepicker').is(':visible')) {
-            //         widget.find('.btn[data-action="decrementSeconds"]').click();
-            //     }
-            // },
+            'alt down': function (widget) {
+                if (!widget) {
+                    return;
+                }
+                if (widget.find('.timepicker').is(':visible')) {
+                    widget.find('.btn[data-action="decrementSeconds"]').click();
+                }
+            },
             t: null,
             'delete': function () {
                 this.clear();
