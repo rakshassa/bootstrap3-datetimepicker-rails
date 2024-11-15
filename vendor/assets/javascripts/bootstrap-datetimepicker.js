@@ -118,6 +118,8 @@
                 16: 'shift',
                 'control': 17,
                 17: 'control',
+                'alt': 18,
+                18: 'alt',
                 'space': 32,
                 32: 'space',
                 't': 84,
@@ -2631,7 +2633,7 @@
                     widget.find('.btn[data-action="incrementMinutes"]').click();
                 }
             },
-            'control shift pageUp': function (widget) {
+            'alt pageUp': function (widget) {
                 if (!widget) {
                     return;
                 }
@@ -2656,7 +2658,7 @@
                     widget.find('.btn[data-action="decrementMinutes"]').click();
                 }
             },
-            'control shift pageDown': function (widget) {
+            'alt pageDown': function (widget) {
                 if (!widget) {
                     return;
                 }
