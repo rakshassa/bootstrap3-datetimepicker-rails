@@ -114,10 +114,10 @@
                 33: 'pageUp',
                 'pageDown': 34,
                 34: 'pageDown',
-                'shift': 16,
-                16: 'shift',
-                'control': 17,
-                17: 'control',
+                // 'shift': 16,
+                // 16: 'shift',
+                // 'control': 17,
+                // 17: 'control',
                 // 'alt': 18,
                 // 18: 'alt',
                 'space': 32,
@@ -126,8 +126,7 @@
                 84: 't',
                 'delete': 46,
                 46: 'delete'
-            },
-            keyState = {},
+            }
 
             /********************************************************************************
              *
@@ -914,7 +913,6 @@
              * Hides the widget. Possibly will emit dp.hide
              */
             hide = function () {
-                keyState = {};
                 var transitioning = false;
                 if (!widget) {
                     return picker;
@@ -1274,56 +1272,48 @@
             },
 
             keydown = function (e) {
-                var handler = null,
-                    index,
-                    index2,
-                    pressedKeys = [],
-                    pressedModifiers = {},
-                    currentKey = e.which,
-                    keyBindKeys,
-                    allModifiersPressed,
-                    pressed = 'p';
+                var handler = null;
+                var currentKey = e.which;
 
                 console.log("keydown with key" + currentKey);
-                keyState[currentKey] = pressed;
 
-                for (index in keyState) {
-                    if (keyState.hasOwnProperty(index) && keyState[index] === pressed) {
-                        pressedKeys.push(index);
-                        if (parseInt(index, 10) !== currentKey) {
-                            pressedModifiers[index] = true;
-                        }
-                    }
-                }
+                for (var keyBindName in options.keyBinds) {
+                    if (options.keyBinds.hasOwnProperty(keyBindName) && typeof (options.keyBinds[keyBindName]) === 'function') {
+                        var keyBindKeys = keyBindName.split(' ');
 
-                for (index in options.keyBinds) {
-                    if (options.keyBinds.hasOwnProperty(index) && typeof (options.keyBinds[index]) === 'function') {
-                        keyBindKeys = index.split(' ');
-                        if (keyBindKeys.length === pressedKeys.length && keyMap[currentKey] === keyBindKeys[keyBindKeys.length - 1]) {
-                            allModifiersPressed = true;
-                            for (index2 = keyBindKeys.length - 2; index2 >= 0; index2--) {
-                                if (!(keyMap[keyBindKeys[index2]] in pressedModifiers)) {
-                                    allModifiersPressed = false;
-                                    break;
-                                }
-                            }
-                            if (allModifiersPressed) {
-                                handler = options.keyBinds[index];
-                                break;
-                            }
+                        // Check if all modifiers are pressed
+                        var shiftMatch = false;
+                        var ctrlMatch = false;
+                        var altMatch = false;
+                        var keyMatch = false;
+
+                        if ("shift" in keyBindKeys) { shiftMatch = event.shiftKey; } else { shiftMatch = !event.shiftKey; }
+                        if ("control" in keyBindKeys) { ctrlMatch = event.ctrlKey; } else { ctrlMatch = !event.ctrlKey; }
+                        if ("alt" in keyBindKeys) { altMatch = event.altKey; } else { altMatch = !event.altKey; }
+
+                        if (keyMap[currentKey] === keyBindKeys[keyBindKeys.length - 1]) { keyMatch = true; }
+
+                        if (keyMatch) { console.log("ShiftMatch:" + shiftMatch + " ctrlMatch:" + ctrlMatch + " altMatch:" + altMatch); };
+                        if (shiftMatch && ctrlMatch && altMatch && keyMatch) {
+                            handler = options.keyBinds[keyBindName];
+                            break;
                         }
                     }
                 }
 
                 if (handler) {
+                    console.log("Found Keybind");
                     handler.call(picker, widget);
                     e.stopPropagation();
                     e.preventDefault();
+                } else {
+                    console.log("No Keybind found");
                 }
             },
 
             keyup = function (e) {
-                keyState[e.which] = 'r';
+                console.log("keyup with key" + e.which);
+                // keyState[e.which] = 'r';
                 e.stopPropagation();
                 e.preventDefault();
             },
