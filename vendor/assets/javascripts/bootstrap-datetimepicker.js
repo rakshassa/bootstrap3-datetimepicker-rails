@@ -118,8 +118,8 @@
                 16: 'shift',
                 'control': 17,
                 17: 'control',
-                'alt': 18,
-                18: 'alt',
+                // 'alt': 18,
+                // 18: 'alt',
                 'space': 32,
                 32: 'space',
                 't': 84,
@@ -2633,15 +2633,15 @@
                     widget.find('.btn[data-action="incrementMinutes"]').click();
                 }
             },
-            'alt pageUp': function (widget) {
-                if (!widget) {
-                    return;
-                }
-                console.log("control shift pageup");
-                if (widget.find('.timepicker').is(':visible')) {
-                    widget.find('.btn[data-action="incrementSeconds"]').click();
-                }
-            },
+            // 'alt pageUp': function (widget) {
+            //     if (!widget) {
+            //         return;
+            //     }
+            //     console.log("control shift pageup");
+            //     if (widget.find('.timepicker').is(':visible')) {
+            //         widget.find('.btn[data-action="incrementSeconds"]').click();
+            //     }
+            // },
             'control pageDown': function (widget) {
                 if (!widget) {
                     return;
@@ -2658,14 +2658,14 @@
                     widget.find('.btn[data-action="decrementMinutes"]').click();
                 }
             },
-            'alt pageDown': function (widget) {
-                if (!widget) {
-                    return;
-                }
-                if (widget.find('.timepicker').is(':visible')) {
-                    widget.find('.btn[data-action="decrementSeconds"]').click();
-                }
-            },
+            // 'alt pageDown': function (widget) {
+            //     if (!widget) {
+            //         return;
+            //     }
+            //     if (widget.find('.timepicker').is(':visible')) {
+            //         widget.find('.btn[data-action="decrementSeconds"]').click();
+            //     }
+            // },
             t: null,
             'delete': function () {
                 this.clear();
