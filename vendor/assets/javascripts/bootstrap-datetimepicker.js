@@ -2612,12 +2612,52 @@
             //    var toggle = widget.find('.picker-switch a[data-action="togglePicker"]');
             //    if(toggle.length > 0) toggle.click();
             //},
-            'control space': function (widget) {
+            'control pageUp': function (widget) {
                 if (!widget) {
                     return;
                 }
                 if (widget.find('.timepicker').is(':visible')) {
                     widget.find('.btn[data-action="incrementHours"]').click();
+                }
+            },
+            'shift pageUp': function (widget) {
+                if (!widget) {
+                    return;
+                }
+                if (widget.find('.timepicker').is(':visible')) {
+                    widget.find('.btn[data-action="incrementMinutes"]').click();
+                }
+            },
+            'control shift pageUp': function (widget) {
+                if (!widget) {
+                    return;
+                }
+                if (widget.find('.timepicker').is(':visible')) {
+                    widget.find('.btn[data-action="incrementSeconds"]').click();
+                }
+            },
+            'control pageDown': function (widget) {
+                if (!widget) {
+                    return;
+                }
+                if (widget.find('.timepicker').is(':visible')) {
+                    widget.find('.btn[data-action="decrementHours"]').click();
+                }
+            },
+            'shift pageDown': function (widget) {
+                if (!widget) {
+                    return;
+                }
+                if (widget.find('.timepicker').is(':visible')) {
+                    widget.find('.btn[data-action="decrementMinutes"]').click();
+                }
+            },
+            'control shift pageDown': function (widget) {
+                if (!widget) {
+                    return;
+                }
+                if (widget.find('.timepicker').is(':visible')) {
+                    widget.find('.btn[data-action="decrementSeconds"]').click();
                 }
             },
             t: null,
