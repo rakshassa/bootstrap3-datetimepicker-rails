@@ -912,6 +912,7 @@
              * Hides the widget. Possibly will emit dp.hide
              */
             hide = function () {
+                keyState = {};
                 var transitioning = false;
                 if (!widget) {
                     return picker;
@@ -2565,6 +2566,7 @@
             },
             left: function (widget) {
                 if (!widget) {
+                    this.show();
                     return;
                 }
                 var d = this.date() || this.getMoment();
@@ -2574,6 +2576,7 @@
             },
             right: function (widget) {
                 if (!widget) {
+                    this.show();
                     return;
                 }
                 var d = this.date() || this.getMoment();
@@ -2614,12 +2617,10 @@
                     return;
                 }
                 if (widget.find('.timepicker').is(':visible')) {
-                    widget.find('.btn[data-action="togglePeriod"]').click();
+                    widget.find('.btn[data-action="incrementHours"]').click();
                 }
             },
-            t: function () {
-                this.date(this.getMoment());
-            },
+            t: null,
             'delete': function () {
                 this.clear();
             }
